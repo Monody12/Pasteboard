@@ -1,0 +1,18 @@
+# mybatis-plus配置数据库地址为 vps.dluserver.cn:3306，数据库名 pasteboard_test，用户名和密码 8kTfTR84MX75MGwS
+spring:
+  application:
+    name: pasteboard
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://vps.dluserver.cn:3306/pasteboard_test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: pasteboard_test
+    password: 8kTfTR84MX75MGwS
+
+server:
+  servlet:
+    context-path: /pasteboard
+
+logging:
+  level:
+    root: info
+
