@@ -21,8 +21,8 @@ class DocController {
     }
 
     @GetMapping
-    fun getDoc(@RequestParam docId: Int) : ApiResponse<Doc> {
-        val doc = docService.getById(docId)
+    fun getDoc(@RequestParam id: Int) : ApiResponse<Doc> {
+        val doc = docService.getById(id)
         return ApiResponse.ok(data = doc)
     }
 
@@ -39,8 +39,8 @@ class DocController {
     }
 
     @DeleteMapping
-    fun deleteDoc(@RequestParam docId: Int, @RequestParam userId: Int) : ApiResponse<Nothing?> {
-        val deleteDoc = docService.deleteDoc(docId, userId)
+    fun deleteDoc(@RequestParam id: Int, @RequestParam userId: Int) : ApiResponse<Nothing?> {
+        val deleteDoc = docService.deleteDoc(id, userId)
         if (deleteDoc == 0) {
             return ApiResponse.notFound("文档不存在")
         }

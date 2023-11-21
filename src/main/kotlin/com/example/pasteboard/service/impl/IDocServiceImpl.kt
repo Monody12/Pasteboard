@@ -1,6 +1,9 @@
 package com.example.pasteboard.service.impl
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper
+import com.baomidou.mybatisplus.extension.kotlin.KtQueryWrapper
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl
 import com.example.pasteboard.entity.Doc
 import com.example.pasteboard.mapper.DocMapper
@@ -31,8 +34,10 @@ class IDocServiceImpl : ServiceImpl<DocMapper, Doc>(), IDocService {
         docMapper.updateById(doc)
     }
 
-    override fun deleteDoc(docId: Int, userId: Int) : Int {
-        val queryWrapper = LambdaQueryWrapper<Doc>().eq(Doc::id, docId).eq(Doc::userId, userId)
+    override fun deleteDoc(docId: Int, userId: Int): Int {
+//        val queryWrapper = LambdaQueryWrapper<Doc>().eq(Doc::id, docId).eq(Doc::userId, userId)
+//        val queryWrapper = QueryWrapper<Doc>().eq("id", docId).eq("user_id", userId)
+        val queryWrapper = KtQueryWrapper(Doc::class.java).eq(Doc::id, docId).eq(Doc::userId, userId)
         return docMapper.delete(queryWrapper)
     }
 }

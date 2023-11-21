@@ -15,7 +15,7 @@ data class User(
     @TableField(fill = FieldFill.INSERT_UPDATE)
     var updateTime: LocalDateTime? = null,
     @TableLogic
-    var isDelete: Boolean
+    var deleteFlag: Boolean? = null
 ){
     constructor(): this(
         id = null,
@@ -24,6 +24,6 @@ data class User(
         email = null,
         createTime = null,
         updateTime = null,
-        isDelete = false
+        deleteFlag = null
     )
 }

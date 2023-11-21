@@ -9,7 +9,7 @@ create table user
     email       varchar(50),
     create_time datetime default now(),
     update_time datetime default now() on update now(),
-    is_delete   bit      default 0
+    delete_flag   bit      default 0
 );
 
 # 创建一个文档表，中包含字段 主键id自增，用户id，文档标题，文档内容，创建时间，更新时间，是否删除
@@ -22,5 +22,5 @@ create table doc
     content     text,
     create_time datetime default now(),
     update_time datetime default now() on update now(),
-    is_delete   bit      default 0
+    delete_flag   bit      default 0
 );
