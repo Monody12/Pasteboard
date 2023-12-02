@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.pasteboard.mapper.UserTokenMapper">
+
+    <select id="selectByUserIdAndToken" resultType="com.example.pasteboard.entity.UserToken">
+        select * from user_token where user_id = #{userId} and token = #{token}
+    </select>
+
+
+</mapper>
