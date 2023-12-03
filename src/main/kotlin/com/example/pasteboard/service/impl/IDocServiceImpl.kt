@@ -21,6 +21,11 @@ class IDocServiceImpl : ServiceImpl<DocMapper, Doc>(), IDocService {
         return docMapper.getDocOutlineList(userId)
     }
 
+    override fun getDocByIdAndUserId(docId: Int, userId: Int): Doc? {
+        val queryWrapper = KtQueryWrapper(Doc::class.java).eq(Doc::id, docId).eq(Doc::userId, userId)
+        return docMapper.selectOne(queryWrapper)
+    }
+
     override fun newDoc(userId: Int, title: String): Doc {
         val doc = Doc().apply {
             this.userId = userId

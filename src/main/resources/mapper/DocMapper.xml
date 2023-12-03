@@ -6,6 +6,7 @@
         select id, user_id, title, create_time, update_time
         from doc
         where user_id = #{userId}
+        order by update_time desc
     </select>
 
 

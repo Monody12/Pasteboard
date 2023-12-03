@@ -36,8 +36,15 @@ class IUserTokenServiceImpl : ServiceImpl<UserTokenMapper, UserToken>(), IUserTo
             // TODO 报错token不存在
             return false
         }
-        // TODO 报错token已过期
-        return userToken.expireTime!!.isAfter(LocalDateTime.now())
+        // 判断是否过期，若过期则删除token，不过期则续期
+        val valid = userToken.expireTime!!.isAfter(LocalDateTime.now())
+        if (!valid) {
+            userTokenMapper.deleteById(userToken.id)
+        } else {
+            userToken.expireTime = LocalDateTime.now().plusDays(tokenExpireDays.toLong())
+            userTokenMapper.updateById(userToken)
+        }
+        return valid
     }
 
     override fun refreshToken(token: String) {

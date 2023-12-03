@@ -6,6 +6,7 @@ import com.example.pasteboard.vo.DocOutline
 
 interface IDocService : IService<Doc>{
     fun getDocOutlineList(userId: Int): List<DocOutline>
+    fun getDocByIdAndUserId(docId: Int, userId: Int): Doc?
     fun newDoc(userId: Int, title: String): Doc
     fun updateDoc(doc: Doc)
     fun deleteDoc(docId: Int, userId: Int) : Int
