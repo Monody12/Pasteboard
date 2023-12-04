@@ -12,7 +12,8 @@ class GlobalCorsConfig {
     @Bean
     fun corsFilter(): CorsFilter {
         val config = CorsConfiguration()
-        config.addAllowedOrigin("*")
+        config.addAllowedOrigin("http://localhost:5173")
+        config.addAllowedOrigin("http://127.0.0.1:5173")
         config.allowCredentials = true
         config.addAllowedMethod("*")
         config.addAllowedHeader("*")
