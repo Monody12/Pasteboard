@@ -18,27 +18,27 @@ class DocController {
     @RequestMapping("/outline")
     fun getDocOutlineList(@RequestHeader("Uid") userId: Int): ApiResponse<List<DocOutline>> {
         val list = docService.getDocOutlineList(userId)
-        return ApiResponse.ok(data = list)
+        return ApiResponse.success(data = list)
     }
 
     @GetMapping
     fun getDoc(@RequestHeader("Uid") userId: Int, @RequestParam id: Int): ApiResponse<out Any?> {
         val doc = docService.getDocByIdAndUserId(id, userId)
             ?: return ApiResponse.notFound("文档不存在")
-        return ApiResponse.ok(data = doc)
+        return ApiResponse.success(data = doc)
     }
 
     @PostMapping
     fun newDoc(@RequestHeader("Uid") userId: Int, @RequestBody docOutline: DocOutline): ApiResponse<Doc> {
         val newDoc = docService.newDoc(docOutline.userId, docOutline.title)
-        return ApiResponse.ok(data = newDoc)
+        return ApiResponse.success(data = newDoc)
     }
 
     @PutMapping
     fun updateDoc(@RequestHeader("Uid") userId: Int, @RequestBody doc: Doc): ApiResponse<Doc> {
         doc.userId = userId
         docService.updateDoc(doc)
-        return ApiResponse.ok(data = doc)
+        return ApiResponse.success(data = doc)
     }
 
     @DeleteMapping
@@ -47,7 +47,7 @@ class DocController {
         if (deleteDoc == 0) {
             return ApiResponse.notFound("文档不存在")
         }
-        return ApiResponse.ok()
+        return ApiResponse.success()
     }
 
 

@@ -6,15 +6,15 @@ data class ApiResponse<T>(
     val data: T
 ) {
     companion object {
-        fun <T> ok(data: T): ApiResponse<T> {
-            return ApiResponse(200, "ok", data)
+        fun <T> success(data: T): ApiResponse<T> {
+            return ApiResponse(200, "成功", data)
         }
 
-        fun ok(): ApiResponse<Nothing?> {
-            return ApiResponse(200, "ok", null)
+        fun success(): ApiResponse<Nothing?> {
+            return ApiResponse(200, "成功", null)
         }
 
-        fun ok(msg: String): ApiResponse<Nothing?> {
+        fun success(msg: String): ApiResponse<Nothing?> {
             return ApiResponse(200, msg, null)
         }
 

@@ -3,7 +3,6 @@ package com.example.pasteboard.controller
 import com.example.pasteboard.entity.ApiResponse
 import com.example.pasteboard.service.IUserService
 import com.example.pasteboard.service.IUserTokenService
-import com.example.pasteboard.vo.UserLogin
 import com.example.pasteboard.vo.UserLoginInput
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -22,7 +21,7 @@ class UserLoginController {
     fun login(@RequestBody userLoginInput: UserLoginInput): ApiResponse<Any?> {
         val userLogin = userService.login(userLoginInput.username, userLoginInput.password)
             ?: return ApiResponse.loginError("用户名或密码错误")
-        return ApiResponse.ok(userLogin)
+        return ApiResponse.success(userLogin)
     }
 
     /**
@@ -37,6 +36,6 @@ class UserLoginController {
         if (!valid){
             return ApiResponse.unauthorized("token无效")
         }
-        return ApiResponse.ok()
+        return ApiResponse.success()
     }
 }
