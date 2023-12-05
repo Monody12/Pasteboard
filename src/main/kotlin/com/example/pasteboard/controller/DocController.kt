@@ -30,7 +30,7 @@ class DocController {
 
     @PostMapping
     fun newDoc(@RequestHeader("Uid") userId: Int, @RequestBody docOutline: DocOutline): ApiResponse<Doc> {
-        val newDoc = docService.newDoc(docOutline.userId, docOutline.title)
+        val newDoc = docService.newDoc(userId, docOutline.title)
         return ApiResponse.success(data = newDoc)
     }
 
