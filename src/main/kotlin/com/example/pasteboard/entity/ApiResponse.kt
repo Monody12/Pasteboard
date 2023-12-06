@@ -2,7 +2,7 @@ package com.example.pasteboard.entity
 
 data class ApiResponse<T>(
     val code: Int,
-    val msg: String,
+    val message: String,
     val data: T
 ) {
     companion object {
