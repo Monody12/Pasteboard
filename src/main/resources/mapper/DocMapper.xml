@@ -5,7 +5,7 @@
     <select id="getDocOutlineList" resultType="com.example.pasteboard.vo.DocOutline">
         select id, user_id, title, create_time, update_time
         from doc
-        where user_id = #{userId}
+        where user_id = #{userId} and delete_flag = 0
         order by update_time desc
     </select>
 
