@@ -1,8 +1,5 @@
 package com.example.pasteboard.service.impl
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper
 import com.baomidou.mybatisplus.extension.kotlin.KtQueryWrapper
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl
 import com.example.pasteboard.entity.Doc
@@ -35,8 +32,8 @@ class IDocServiceImpl : ServiceImpl<DocMapper, Doc>(), IDocService {
         return doc
     }
 
-    override fun updateDoc(doc: Doc) {
-        docMapper.updateById(doc)
+    override fun updateDoc(doc: Doc): Int {
+        return docMapper.updateById(doc)
     }
 
     override fun deleteDoc(docId: Int, userId: Int): Int {

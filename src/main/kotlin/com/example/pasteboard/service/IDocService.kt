@@ -8,6 +8,6 @@ interface IDocService : IService<Doc>{
     fun getDocOutlineList(userId: Int): List<DocOutline>
     fun getDocByIdAndUserId(docId: Int, userId: Int): Doc?
     fun newDoc(userId: Int, title: String): Doc
-    fun updateDoc(doc: Doc)
+    fun updateDoc(doc: Doc) : Int
     fun deleteDoc(docId: Int, userId: Int) : Int
 }

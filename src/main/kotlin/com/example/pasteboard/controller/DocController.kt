@@ -35,10 +35,14 @@ class DocController {
     }
 
     @PutMapping
-    fun updateDoc(@RequestHeader("Uid") userId: Int, @RequestBody doc: Doc): ApiResponse<Doc> {
+    fun updateDoc(@RequestHeader("Uid") userId: Int, @RequestBody doc: Doc): ApiResponse<out Any?> {
         doc.userId = userId
-        docService.updateDoc(doc)
-        return ApiResponse.success(data = doc)
+        val updateDoc = docService.updateDoc(doc)
+        return if (updateDoc == 0) {
+            ApiResponse.notFound("文档不存在")
+        } else {
+            ApiResponse.success(data = doc)
+        }
     }
 
     @DeleteMapping
