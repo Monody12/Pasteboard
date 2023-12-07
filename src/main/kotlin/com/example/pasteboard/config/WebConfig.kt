@@ -17,7 +17,7 @@ class WebConfig : WebMvcConfigurer {
         val customInterceptor = CustomInterceptor().apply { setUserTokenService(userTokenService) }
         registry.addInterceptor(customInterceptor)
             .addPathPatterns("/**") // 设置拦截的路径规则
-            .excludePathPatterns("/user/login","/user/checkToken") // 设置排除的路径规则
+            .excludePathPatterns("/user/login","/user/checkToken","/dist/**") // 设置排除的路径规则
     }
 }
 
