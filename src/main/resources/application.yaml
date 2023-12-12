@@ -12,7 +12,10 @@ server:
   servlet:
     context-path: /pasteboard
 
+# 日志级别，全局 INFO，mapper DEBUG
 logging:
   level:
-    root: info
+    root: INFO
+    com.example.pasteboard.mapper: DEBUG
+    org.springframework: DEBUG
 

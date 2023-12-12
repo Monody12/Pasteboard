@@ -38,7 +38,7 @@ dependencies {
 
 
     // 项目依赖
-//    implementation("net.logstash.logback:logstash-logback-encoder:6.6")
+    implementation("net.logstash.logback:logstash-logback-encoder:6.6")
     implementation("mysql:mysql-connector-java:8.0.26")
     implementation("com.baomidou:mybatis-plus-boot-starter:3.5.4.1")
 
